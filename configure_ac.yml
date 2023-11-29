@@ -2,6 +2,8 @@
 - hosts: localhost
   gather_facts: false
   tasks:
+    - debug:
+        var: hoge
     - ansible.controller.job_template:
         name: jt_from_playbook2
         validate_certs: false
@@ -17,5 +19,5 @@
         name: test_sc2
         unified_job_template: jt_from_playbook2
 #        rrule: "{{ query(awx.awx.schedule_rruleset, '2024-04-30 10:30:00', rules=rrule, timezone='UTC') }}"
-        rrule: "DTSTART:{{ date }}T130551Z RRULE:FREQ=WEEKLY;INTERVAL=1;COUNT=1"
+
         validate_certs: false
