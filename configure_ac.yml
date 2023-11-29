@@ -1,13 +1,7 @@
 ---
 - hosts: localhost
   gather_facts: false
-  vars:
-    input: "2016-08-14 20:00:12"
-    date: "{{ input | to_datetime('YYMMDDHHMM') }}"
   tasks:
-    - debug:
-        msg: "{{date}}"
-    - fail:
     - ansible.controller.job_template:
         name: jt_from_playbook2
         validate_certs: false
