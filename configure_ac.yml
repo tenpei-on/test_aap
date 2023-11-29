@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - ansible.controller.job_template:
+        name: jt_from_playbook2
+        validate_certs: false
+        inventory: 5
+        project: 21
+        playbook: test.yml
+        controller_host: 10.64.207.106
+        controller_username: admin
+        controller_password: tenpei417
+      register: jt_res
+
+    - debug:
+        var: jt_res.id
+
+    - ansible.controller.schedule:
